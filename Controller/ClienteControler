@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+
+[Route("api/usuarios")] // Rota base para o controlador
+[ApiController]
+public class UsuarioController : ControllerBase
+{
+    private List<Usuario> usuarios = new List<Usuario>(); // Simulando uma lista de usuários
+
+    // GET: api/usuarios
+    [HttpGet]
+    public ActionResult<IEnumerable<Usuario>> Get()
+    {
+        return usuarios;
+    }
+
+    // GET: api/usuarios/{id}
+    [HttpGet("{id}")]
+    public ActionResult<Usuario> Get(int id)
+    {
+        var usuario = usuarios.Find(u => u.UsuarioID == id);
+        if (usuario == null)
+        {
+            return NotFound(); // Retornar 404 se o usuário não for encontrado
+        }
+        return usuario;
+    }
+
+    // POST: api/usuarios
+    [HttpPost]
+    public IActionResult Post([FromBody] Usuario usuario)
+    {
+        usuario.UsuarioID = usuarios.Count + 1; // Apenas para fins de exemplo, normalmente seria gerado automaticamente
+        usuario.DataCriacao = DateTime.Now; // Definir a data de criação como a data atual
+        usuarios.Add(usuario);
+        return CreatedAtAction("Get", new { id = usuario.UsuarioID }, usuario);
+    }
+
+    // PUT: api/usuarios/{id}
+    [HttpPut("{id}")]
+    public IActionResult Put(int id, [FromBody] Usuario usuario)
+    {
+        var usuarioExistente = usuarios.Find(u => u.UsuarioID == id);
+        if (usuarioExistente == null)
+        {
+            return NotFound(); // Retornar 404 se o usuário não for encontrado
+        }
+
+        usuarioExistente.Nome = usuario.Nome;
+        usuarioExistente.Genero = usuario.Genero;
+        usuarioExistente.CPF = usuario.CPF;
+        usuarioExistente.Contato = usuario.Contato;
+        usuarioExistente.DataAgendamento = usuario.DataAgendamento;
+
+        return NoContent(); // Retornar 204 No Content para sucesso na atualização
+    }
+
+    // DELETE: api/usuarios/{id}
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var usuario = usuarios.Find(u => u.UsuarioID == id);
+        if (usuario == null)
+        {
+            return NotFound(); // Retornar 404 se o usuário não for encontrado
+        }
+
+        usuarios.Remove(usuario);
+        return NoContent(); // Retornar 204 No Content para sucesso na exclusão
+    }
+}
