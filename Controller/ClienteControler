@@ -2,71 +2,71 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-[Route("api/usuarios")] // Rota base para o controlador
+[Route("api/cliente")] // Rota base para o controlador
 [ApiController]
-public class UsuarioController : ControllerBase
+public class ClienteController : ControllerBase
 {
-    private List<Usuario> usuarios = new List<Usuario>(); // Simulando uma lista de usuários
+    private List<Cliente> clientes = new List<Cliente>();
 
-    // GET: api/usuarios
+    // GET: api/cliente
     [HttpGet]
     public ActionResult<IEnumerable<Usuario>> Get()
     {
         return usuarios;
     }
 
-    // GET: api/usuarios/{id}
+    // GET: api/cliente/{id}
     [HttpGet("{id}")]
-    public ActionResult<Usuario> Get(int id)
+    public ActionResult<Cliente> Get(int id)
     {
-        var usuario = usuarios.Find(u => u.UsuarioID == id);
-        if (usuario == null)
+        var cliente = clientes.Find(u => u.ClienteID == id);
+        if (cliente == null)
         {
-            return NotFound(); // Retornar 404 se o usuário não for encontrado
+            return NotFound(); // Retornar 404 se o cliente não for encontrado
         }
-        return usuario;
+        return cliente;
     }
 
-    // POST: api/usuarios
+    // POST: api/clientes
     [HttpPost]
-    public IActionResult Post([FromBody] Usuario usuario)
+    public IActionResult Post([FromBody] Cliente cliente)
     {
-        usuario.UsuarioID = usuarios.Count + 1; // Apenas para fins de exemplo, normalmente seria gerado automaticamente
-        usuario.DataCriacao = DateTime.Now; // Definir a data de criação como a data atual
-        usuarios.Add(usuario);
-        return CreatedAtAction("Get", new { id = usuario.UsuarioID }, usuario);
+        cliente.ClienteID = clientes.Count + 1;
+        cliente.DataCriacao = DateTime.Now; // Definir a data de criação como a data atual
+        clientes.Add(cliente);
+        return CreatedAtAction("Get", new { id = cliente.ClienteID }, cliente);
     }
 
-    // PUT: api/usuarios/{id}
+    // PUT: api/clientes/{id}
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody] Usuario usuario)
+    public IActionResult Put(int id, [FromBody] Cliente cliente)
     {
-        var usuarioExistente = usuarios.Find(u => u.UsuarioID == id);
-        if (usuarioExistente == null)
+        var clienteExistente = clientes.Find(u => u.ClienteID == id);
+        if (clienteExistente == null)
         {
-            return NotFound(); // Retornar 404 se o usuário não for encontrado
+            return NotFound(); // Retornar 404 se o cliente não for encontrado
         }
 
-        usuarioExistente.Nome = usuario.Nome;
-        usuarioExistente.Genero = usuario.Genero;
-        usuarioExistente.CPF = usuario.CPF;
-        usuarioExistente.Contato = usuario.Contato;
-        usuarioExistente.DataAgendamento = usuario.DataAgendamento;
+        clienteExistente.Nome = cliente.Nome;
+        clienteExistente.Genero = cliente.Genero;
+        clienteExistente.CPF = cliente.CPF;
+        clienteExistente.Contato = cliente.Contato;
+        clienteExistente.DataAgendamento = cliente.DataAgendamento;
 
         return NoContent(); // Retornar 204 No Content para sucesso na atualização
     }
 
-    // DELETE: api/usuarios/{id}
+    // DELETE: api/clientes/{id}
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        var usuario = usuarios.Find(u => u.UsuarioID == id);
-        if (usuario == null)
+        var cliente = clientes.Find(u => u.ClienteID == id);
+        if (cliente == null)
         {
-            return NotFound(); // Retornar 404 se o usuário não for encontrado
+            return NotFound(); // Retornar 404 se o cliente não for encontrado
         }
 
-        usuarios.Remove(usuario);
+        clientes.Remove(cliente);
         return NoContent(); // Retornar 204 No Content para sucesso na exclusão
     }
 }
