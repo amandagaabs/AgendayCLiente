@@ -1,0 +1,7 @@
+C:\Users\Amaan\OneDrive\Área de Trabalho\AgendayCliente\AgendayCLiente\obj\Debug\net6.0\AgendayCliente.csproj.AssemblyReference.cache
+C:\Users\Amaan\OneDrive\Área de Trabalho\AgendayCliente\AgendayCLiente\obj\Debug\net6.0\AgendayCliente.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amaan\OneDrive\Área de Trabalho\AgendayCliente\AgendayCLiente\obj\Debug\net6.0\AgendayCliente.AssemblyInfoInputs.cache
+C:\Users\Amaan\OneDrive\Área de Trabalho\AgendayCliente\AgendayCLiente\obj\Debug\net6.0\AgendayCliente.AssemblyInfo.cs
+C:\Users\Amaan\OneDrive\Área de Trabalho\AgendayCliente\AgendayCLiente\obj\Debug\net6.0\AgendayCliente.csproj.CoreCompileInputs.cache
+C:\Users\Amaan\OneDrive\Área de Trabalho\AgendayCliente\AgendayCLiente\obj\Debug\net6.0\AgendayCliente.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Amaan\OneDrive\Área de Trabalho\AgendayCliente\AgendayCLiente\obj\Debug\net6.0\AgendayCliente.MvcApplicationPartsAssemblyInfo.cache

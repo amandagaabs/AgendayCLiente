@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using AgendayCliente.Models;
-public class AppDataContext : Dbcontext
+
+namespace AgendayCliente.Data;
+public class AppDataContext : DbContext
 {
-    public DbSet<AgendamentoCliente> AgendamentoClientes { get; set; }
+    public DbSet<AgendamentoClientes> AgendamentoClientes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // Configure a conexão com o banco de dados aqui
-        optionsBuilder.UseSqlServer("SuaStringDeConexao"); // Substitua pela sua string de conexão
+        optionsBuilder.UseSqlServer("Agenda");
     }
 }
