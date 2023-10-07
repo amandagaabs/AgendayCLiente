@@ -4,7 +4,7 @@ namespace Agendamentos.Models;
 public class AgendamentoClientes
 {
     // Propriedades
-    public int UsuarioID { get; set; }
+    public int ClienteID { get; set; }
     public string Nome { get; set; }
     public string Genero { get; set; }
     public string CPF { get; set; }
@@ -13,9 +13,9 @@ public class AgendamentoClientes
     public DateTime DataCriacao { get; set; }
 
     // Construtor
-    public Usuario(int usuarioID, string nome, string genero, string cpf, string contato, DateTime dataAgendamento, DateTime dataCriacao)
+    public Cliente(int ClienteID, string nome, string genero, string cpf, string contato, DateTime dataAgendamento, DateTime dataCriacao)
     {
-        UsuarioID = usuarioID;
+        ClienteID = clienteID;
         Nome = nome;
         Genero = genero;
         CPF = cpf;
